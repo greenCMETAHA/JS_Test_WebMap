@@ -3,12 +3,20 @@
     var webmap = angular.module('webmapControllers', []);
 
 
-    webmap.controller('TableCtrl', ['$scope', '$http', function($scope, $http ) {
-        $http.get("https://api.hh.ru/vacancies?text=javaScript").success(function(data) {
-            $scope.vacancies = data.items;
-        });
+    webmap.controller('TableCtrl', ['$scope', 'vacansiesList',
+        function($scope, vacansiesList ) {
+            vacansiesList.query().$promise.then(function(result){
+                $scope.vacancies=result.items;
+            })
 
-    }]);
+    //webmap.controller('TableCtrl', ['$scope', '$http', function($scope, $http) {
+    //$http.get('https://api.hh.ru/vacancies?text=javaScript').success(function(data) {
+    //    $scope.vacancies = data.items;
+    //});
+
+}]);
+
+
 
     webmap.controller('MapCtrl', ['$scope', '$http', function($scope, $http) {
         var str="http://hh.ru/shards/searchvacancymap?items_on_page=100&&enable_snippets=true&label=with_address&text=javascript" +

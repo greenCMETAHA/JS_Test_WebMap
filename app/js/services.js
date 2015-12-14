@@ -1,8 +1,11 @@
-//var webmap = angular.module('js-test-webmap', ['ngResource']);
-//
-//webmap.factory('vacancies', ['$resource','serchField',
-//    function($resource, serchField){
-//        return $resource("https://api.hh.ru/vacancies", {}, {
-//            query: {method:'GET', params:{text: serchField}, isArray:true}
-//        });
-//    }]);
+var webmap = angular.module('webMapServices', ['ngResource']);
+
+webmap.factory('vacansiesList', ['$resource',
+    function($resource){
+        return $resource('https://api.hh.ru/vacancies?text=:search', {search:'javaScript'}, {
+            query: {method:'GET', params:{}, }
+        });
+    }]);
+
+
+//https://api.hh.ru/vacancies?text=javaScript

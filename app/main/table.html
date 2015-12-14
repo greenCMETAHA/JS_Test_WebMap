@@ -1,9 +1,20 @@
 
 <ul>
-    <li ng-repeat="vacancy in vacancies">
-        <span>{{vacancy.name}}</span>
-        <p>{{vacancy.address.city}}</p>
-    </li>
+    <table>
+        <tr ng-repeat="vacancy in vacancies">
+            <td>{{vacancy.name}}</td>
+            <td>{{vacancy.salary.currency}}</td>
+            <td>{{vacancy.salary.from}}</td>
+            <td>{{vacancy.salary.to}}</td>
+            <td>{{vacancy.snippet.requirement}}</td>
+            <td>{{vacancy.snippet.responsibility}}</td>
+            <td>{{vacancy.area.name}}</td>
+            <td>{{vacancy.employer.name}}</td>
+            <td>{{vacancy.address.street}}</td>
+        </tr>
+    </table>
+    <!--<li >-->
+        <!--<span></span>-->
+        <!--<p>{{vacancy.address.city}}</p>-->
+    <!--</li>-->
 </ul>
-
-</div>

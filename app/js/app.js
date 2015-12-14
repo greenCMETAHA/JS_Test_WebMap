@@ -2,7 +2,8 @@
 
 var webmap = angular.module('js-test-webmap', [
     'ngRoute',
-    'webmapControllers'
+    'webmapControllers',
+    'webMapServices'
 ]);
 
 webmap.config(['$routeProvider',
