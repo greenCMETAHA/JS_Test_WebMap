@@ -17,6 +17,10 @@ webmap.config(['$routeProvider',
             templateUrl: 'main/map.html',
             controller: 'MapCtrl'
         }).
+        when('/mapVacanciesList', {
+            templateUrl: 'main/mapVacancies.html',
+            controller: 'mapVacanciesListCtrl'
+        }).
         otherwise({
             redirectTo: '/table'
         });
