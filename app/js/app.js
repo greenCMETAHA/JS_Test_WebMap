@@ -3,7 +3,8 @@
 var webmap = angular.module('js-test-webmap', [
     'ngRoute',
     'webmapControllers',
-    'webMapServices'
+    'webMapServices',
+    'leaflet'
 ]);
 
 webmap.config(['$routeProvider',
@@ -25,3 +26,5 @@ webmap.config(['$routeProvider',
             redirectTo: '/table'
         });
     }]);
+
+
