@@ -31,11 +31,11 @@ webmap.controller("BasicCenterController", [ "$scope", function($scope) {
         },
         markers: {
             m0: {
-                lat: 51.505,
-                lng: -0.09,
-                message: "I want to travel here!",
-                focus: true,
-                draggable: false
+                //lat: 51.505,
+                //lng: -0.09,
+                //message: "I want to travel here!",
+                //focus: true,
+                //draggable: false
 
                 //lat: 53.9036983,
                 //lng: 27.5510742,

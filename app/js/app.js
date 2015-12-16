@@ -7,8 +7,8 @@ var webmap = angular.module('js-test-webmap', [
     'leaflet'
 ]);
 
-webmap.config(['$routeProvider',
-    function($routeProvider) {
+webmap.config(['$routeProvider', '$httpProvider',
+    function($routeProvider, $httpProvider) {
         $routeProvider.
         when('/table', {
             templateUrl: 'main/table.html',

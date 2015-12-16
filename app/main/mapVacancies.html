@@ -1,0 +1,36 @@
+<div ng-controller="mapVacanciesListCtrl">
+
+    <leaflet  center="myCity"  tiles="tiles" defaults="defaults" layers="layers" markers="markers" width="700" height="480"></leaflet>
+    <h1>4 steps, basic example, get my place, marker on my place</h1>
+    <ul>
+        <li><input type="number" step="any" ng-model="myCity.lat" /> Latitude</li>
+        <li><input type="number" step="any" ng-model="myCity.lng" /> Longitude</li>
+        <li><input type="number" step="any" ng-model="myCity.zoom" /> Zoom</li>
+    </ul>
+
+    <p>
+        <a ng-click="reload()" href="#/mapVacanciesList">Обновить</a>
+    <p>
+
+    <ul>
+        <table>
+            <tr ng-repeat="vacancy in vacancies">
+                    <td>{{vacancy.name}}</td>
+                    <td>{{vacancy.salary.currency}}</td>
+                    <td>{{vacancy.salary.from}}</td>
+                    <td>{{vacancy.salary.to}}</td>
+                    <td>{{vacancy.snippet.requirement}}</td>
+                    <td>{{vacancy.snippet.responsibility}}</td>
+                    <td>{{vacancy.area.name}}</td>
+                    <td>{{vacancy.employer.name}}</td>
+                    <td>{{vacancy.address.street}}</td>
+                    <td>{{vacancy.address.lat}}</td>
+                    <td>{{vacancy.address.lng}}</td>
+            </tr>
+        </table>
+        <!--<li >-->
+        <!--<span></span>-->
+        <!--<p>{{vacancy.address.city}}</p>-->
+        <!--</li>-->
+    </ul>
+</div>
