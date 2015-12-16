@@ -1,4 +1,9 @@
-<div ng-controller="BasicFirstController">
-<leaflet width="100%" height="480px"></leaflet>
-<h1>First steps, basic example</h1>
+<div ng-controller="BasicCenterController">
+<leaflet  center="myCity"  tiles="tiles" defaults="defaults" layers="layers" markers="markers" width="700" height="480"></leaflet>
+<h1>4 steps, basic example, get my place, marker on my place</h1>
+    <ul>
+        <li><input type="number" step="any" ng-model="myCity.lat" /> Latitude</li>
+        <li><input type="number" step="any" ng-model="myCity.lng" /> Longitude</li>
+        <li><input type="number" step="any" ng-model="myCity.zoom" /> Zoom</li>
+    </ul>
 </div>

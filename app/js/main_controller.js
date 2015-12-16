@@ -5,11 +5,23 @@
 
     webmap.controller('TableCtrl', ['$scope', 'vacansiesList',
         function($scope, vacansiesList) {
-            var txtSearch= angular.isUndefined($scope.searchInput)?"по всем":$scope.searchInput;
-            var vacansiesTemp = vacansiesList($scope.searchInput).query();
-            vacansiesTemp.$promise.then(function(result){
-                $scope.vacancies=result.items;
-            })
+
+            $scope.loadData = function() {
+                var vacansiesTemp = vacansiesList($scope.searchInput).query();
+                vacansiesTemp.$promise.then(function(result){
+                    $scope.vacancies=result.items;
+                });
+            }
+
+            $scope.reload = function()
+            {
+                $scope.loadData();
+            };
+           // $scope.$watch('searchInput', function (){
+           //   $scope.loadData();
+           // });
+
+            $scope.loadData();
 
     //webmap.controller('TableCtrl', ['$scope', '$http', function($scope, $http) {
     //$http.get('https://api.hh.ru/vacancies?text=javaScript').success(function(data) {
@@ -21,6 +33,8 @@
 
 webmap.controller('MapCtrl', ['$scope', '$http',
     function($scope, $http) {
+
+
 
 }]);
 
