@@ -35,76 +35,47 @@
     }]);
 
     webmap.controller('mapVacanciesListCtrl', ['$scope', 'vacansiesList',
-        function($scope, vacansiesList) {
-
+        function($scope, vacansiesList ) {
             angular.extend($scope, {
                 myCity: {
-                    autoDiscover: true,
-                    //lat: 51.505, lng: -0.09,
+                    //autoDiscover: true,
+                    lat: 53.9172810, //51.505,  //Minsk
+                    lng: 27.53173812, //-0.09
                     zoom: 11
-                },
-
-                tiles: {
-                    url: "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-
                 },
                 layers: {
                     baselayers: {
                         osm: {
                             name: 'OpenStreetMap',
+                            type: 'xyz',
                             url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                            type: 'xyz'
+                        },
+                    },
+                    overlays: {
+                        locations: {
+                            name: 'vacanciesLayer',
+                            type: 'markercluster',
+                            visible: true
                         }
                     }
                 },
-                defaults: {
-                    zoomAnimation: false,
-                    markerZoomAnimation: false,
-                    fadeAnimation: false
-                },
                 markers: {
-                    m0: {
+                    //m0: {
                         //lat: 51.505, lng: -0.09, message: "I want to travel here!", focus: true, draggable: false
-                    },
+                    //},
                 }
             });
             $scope.$watch("myCity.zoom", function(zoom) {
-                $scope.tiles.url = (zoom > 10)
-                    ? "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                    : "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
+                //$scope.tiles.url = (zoom > 10)
+                //    ? "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                //    : "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
             });
-
-            $scope.addMarkers = function() {
-                angular.extend($scope, {
-                    markers: {
-                        m1: {
-                            lat: 51.505,
-                            lng: -0.09,
-                            message: "I'm a static marker",
-                        },
-                        m2: {
-                            lat: 51,
-                            lng: 0,
-                            //focus: true,
-                            message: "Hey, drag me if you want",
-                            draggable: true
-                        },
-                    }
-                });
-            };
-
-            $scope.removeMarkers = function() {
-                $scope.markers = {};
-            }
-
-            $scope.addMarkers();
-
             //++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
 
             $scope.loadData = function() {
-                var vacansiesTemp = vacansiesList($scope.searchInput).query();
+                var vacansiesTemp = vacansiesList($scope.searchInput,$scope.myCity.lat,$scope.myCity.lng).query();
                 vacansiesTemp.$promise.then(function(result){
                     $scope.vacancies=result.items;
 
@@ -120,8 +91,9 @@
                                 objMass[nameObj]={
                                         lat: currentVacancy.address.lat,
                                         lng: currentVacancy.address.lng,
-                                        message: currentVacancy.name + '\n' + currentVacancy.employer.name,
-                                        focus: true,
+                                        layer: 'locations',
+                                        message: currentVacancy.name.trim() + '\n' + currentVacancy.employer.name.trim(),
+                                        //focus: true,
                                         draggable: false
                                     };
                             }

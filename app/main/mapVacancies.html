@@ -1,10 +1,10 @@
 <div ng-controller="mapVacanciesListCtrl">
 
-    <leaflet  center="myCity"  tiles="tiles" defaults="defaults" layers="layers" markers="markers" width="700" height="480"></leaflet>
-    <h1>4 steps, basic example, get my place, marker on my place</h1>
-    <ul>
-        <li><input type="number" step="any" ng-model="myCity.lat" /> Latitude</li>
-        <li><input type="number" step="any" ng-model="myCity.lng" /> Longitude</li>
+    <leaflet  center="myCity" layers="layers" markers="markers" width="700" height="480"></leaflet>
+    <h1>5 steps, basic example, get my place, marker on my place, markercluster</h1>
+    <ul >
+        <li ng-show="true"><input type="number" step="any" ng-model="myCity.lat" /> Latitude</li>
+        <li ng-show="true"><input type="number" step="any" ng-model="myCity.lng" /> Longitude</li>
         <li><input type="number" step="any" ng-model="myCity.zoom" /> Zoom</li>
     </ul>
 
