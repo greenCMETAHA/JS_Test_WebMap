@@ -9,7 +9,8 @@ module.exports = function(config){
       'http://code.angularjs.org/1.4.8/angular-mocks.js',
       'http://code.angularjs.org/1.4.8/angular-resource.js',
       'http://code.angularjs.org/1.4.8/angular-animate.js',
-      'app/js/**/*.js',
+        'app/lib/leaflet/angular-leaflet-directive.min.js',
+      'app/js/*.js',
       'test/unit/**/*.js'
     ],
 

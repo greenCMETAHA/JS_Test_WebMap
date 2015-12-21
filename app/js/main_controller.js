@@ -1,7 +1,6 @@
-'use strict';
+    'use strict';
 
     var webmap = angular.module('webmapControllers', []);
-
 
     webmap.controller('TableCtrl', ['$scope', 'vacansiesList',
         function($scope, vacansiesList) {
@@ -10,11 +9,11 @@
                 var vacansiesTemp = vacansiesList($scope.searchInput).query();
                 vacansiesTemp.$promise.then(function(result){
                     $scope.vacancies=result.items;
+                    console.log($scope.vacancies.length);
                 });
             }
 
-            $scope.reload = function()
-            {
+            $scope.reload = function(){
                 $scope.loadData();
             };
            // $scope.$watch('searchInput', function (){
@@ -22,12 +21,6 @@
            // });
 
             $scope.loadData();
-
-    //webmap.controller('TableCtrl', ['$scope', '$http', function($scope, $http) {
-    //$http.get('https://api.hh.ru/vacancies?text=javaScript').success(function(data) {
-    //    $scope.vacancies = data.items;
-    //});
-
     }]);
 
     webmap.controller('MapCtrl', ['$scope', '$http',
@@ -38,9 +31,8 @@
         function($scope, vacansiesList ) {
             angular.extend($scope, {
                 myCity: {
-                    //autoDiscover: true,
-                    lat: 53.9172810, //51.505,  //Minsk
-                    lng: 27.53173812, //-0.09
+                    lat: 53.9172810,  //Minsk  //autoDiscover: true,
+                    lng: 27.53173812,
                     zoom: 11
                 },
                 layers: {
@@ -60,19 +52,9 @@
                     }
                 },
                 markers: {
-                    //m0: {
-                        //lat: 51.505, lng: -0.09, message: "I want to travel here!", focus: true, draggable: false
-                    //},
                 }
             });
-            $scope.$watch("myCity.zoom", function(zoom) {
-                //$scope.tiles.url = (zoom > 10)
-                //    ? "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                //    : "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
-            });
-            //++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
+           //++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
             $scope.loadData = function() {
                 var vacansiesTemp = vacansiesList($scope.searchInput,$scope.myCity.lat,$scope.myCity.lng).query();
@@ -123,21 +105,3 @@
 
             $scope.loadData();
     }]);
-//
-//webmap.controller('mapVacanciesListCtrl', ['$scope', 'vacansiesListWithParameters',
-//    function($scope, vacansiesListWithParameters) {
-//
-//        $scope.loadData = function () {
-//            var vacansiesTemp = vacansiesListWithParameters($scope.searchInput).load();
-//            vacansiesTemp.$promise.then(function (result) {
-//                $scope.vacancies = result.items;
-//            });
-//        }
-//
-//        $scope.reload = function () {
-//            $scope.loadData();
-//        };
-//
-//        $scope.loadData();
-//    }]);
-

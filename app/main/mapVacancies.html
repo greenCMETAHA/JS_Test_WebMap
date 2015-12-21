@@ -1,7 +1,9 @@
 <div ng-controller="mapVacanciesListCtrl">
 
     <leaflet  center="myCity" layers="layers" markers="markers" width="700" height="480"></leaflet>
-    <h1>5 steps, basic example, get my place, marker on my place, markercluster</h1>
+    <div class="page-header">
+        <h1>Карта с кластерами меток из полученных данных</h1>
+    </div>
     <ul >
         <li ng-show="true"><input type="number" step="any" ng-model="myCity.lat" /> Latitude</li>
         <li ng-show="true"><input type="number" step="any" ng-model="myCity.lng" /> Longitude</li>
