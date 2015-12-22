@@ -40,10 +40,13 @@ describe('Test WebMap', function() {
         var vacList = element.all(by.repeater('vacancy in vacancies'));
         var query = element(by.model('searchInput'));
 
+
         expect(vacList.count()).toBe(300);
+
 
         query.sendKeys('java');
         expect(vacList.count()).toBe(300);
+
 
         query.clear();
         query.sendKeys('javaScript');
