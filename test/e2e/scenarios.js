@@ -10,7 +10,7 @@ describe('Test WebMap', function() {
     it('should redirect index.html to index.html#/table', function () {
         browser.get('app/index.html');
         browser.getLocationAbsUrl().then(function (url) {
-            expect(url).toEqual('/table');
+            expect(url).toEqual('/mapVacanciesList');
         });
     });
 
@@ -40,18 +40,14 @@ describe('Test WebMap', function() {
         var vacList = element.all(by.repeater('vacancy in vacancies'));
         var query = element(by.model('searchInput'));
 
-        var result =(vacList.count()>20?true:false);
-
-        expect().toBe(true);
+        expect(vacList.count()).toBe(300);
 
         query.sendKeys('java');
-        result =(vacList.count()>20?true:false);
-        expect(result).toBe(true);
+        expect(vacList.count()).toBe(300);
 
         query.clear();
         query.sendKeys('javaScript');
-        result =(vacList.count()>20?true:false);
-        expect(result).toBe(true);
+        expect(vacList.count()).toBe(300);
     });
 
 
