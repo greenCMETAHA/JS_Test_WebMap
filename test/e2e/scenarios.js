@@ -43,10 +43,8 @@ describe('Test WebMap', function() {
 
         expect(vacList.count()).toBe(300);
 
-
         query.sendKeys('java');
         expect(vacList.count()).toBe(300);
-
 
         query.clear();
         query.sendKeys('javaScript');
