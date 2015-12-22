@@ -6,7 +6,7 @@ describe('WebMap controllers', function() {
     var $httpBackend;
     var scope, ctrl;
 
-    var $controller;
+    var $controller, $rootScopeLocal;
     var responseData={
         name: 'Производитель',
         salary: {
@@ -28,6 +28,16 @@ describe('WebMap controllers', function() {
             street: 'Героев выборной комиссии',
             lat: 54,
             lng: 28
+        },
+        bounds: {
+            northEast: {
+                lat: 53.99767941971407,
+                lng: 27.770004272460938
+            },
+            southWest: {
+                lat: 53.803489443287994,
+                lng: 27.289352416992188
+            }
         }
     };
 
@@ -44,13 +54,13 @@ describe('WebMap controllers', function() {
         scope = $rootScope.$new();
         scope.vacancies=[];
 
+        $rootScopeLocal = $rootScope;
         $controller = _$controller_;
     }));
 
     describe('TableCtrl', function() {
 
-        it('should create "TableCtrl" model with 1 vacancy', function() {
-            var scope = {};
+        it('1. should create "TableCtrl" model with 1 vacancy', function() {
             scope.vacansiesList=[responseData];
             var ctrl = $controller('TableCtrl', { $scope: scope });
             scope.loadData();
@@ -58,7 +68,7 @@ describe('WebMap controllers', function() {
         });
 
         //Те, что, вроде, работали
-        it('should create "tableCtrl" model with 1 vacancy', function () {
+        it('2. should create "tableCtrl" model with 1 vacancy', function () {
             var scope = {vacansiesList: [responseData]};
             var ctrl = $controller('MapCtrl', {$scope: scope});
 
@@ -66,20 +76,29 @@ describe('WebMap controllers', function() {
         });
 
 
-        it('should create "MapCtrl" model with 0 vacancies', function () {
+        it('3. should create "MapCtrl" model with 0 vacancies', function () {
             var scope = {vacansiesList: []};
             var ctrl = $controller('MapCtrl', {$scope: scope});
 
             expect(scope.vacansiesList.length).toBe(0);
         });
 
-        it('should create "manVacancies" model with 1 vacancy', function() {
-            var scope = {};
+        it('4. should create "manVacancies" model with 1 vacancy for loadData()', function() {
             scope.vacansiesList=[responseData];
             var ctrl = $controller('mapVacanciesListCtrl', { $scope: scope });
             scope.searchInput='java';
             scope.loadData();
             expect(scope.vacansiesList.length).toBe(1);
         });
+
+        it('5. should create "manVacancies" model with 1 vacancy. for pressEnter()', function() {
+            scope = $rootScopeLocal.$new();
+            scope.vacansiesList=[responseData];
+
+            var ctrl = $controller('mapVacanciesListCtrl', { $scope: scope });
+            scope.pressEnter();
+            expect(scope.vacansiesList.length).toBe(1);
+        });
+
     });
 })

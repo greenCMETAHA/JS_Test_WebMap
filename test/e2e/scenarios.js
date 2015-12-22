@@ -1,11 +1,9 @@
 'use strict'
 
 describe('Test WebMap', function() {
-    //var ptor;
 
     beforeEach(function() {
         browser.get('app/index.html');
-        //ptor = protractor.getInstance();
     });
 
 
@@ -42,14 +40,18 @@ describe('Test WebMap', function() {
         var vacList = element.all(by.repeater('vacancy in vacancies'));
         var query = element(by.model('searchInput'));
 
-        expect(vacList.count()).toBe(20);
+        var result =(vacList.count()>20?true:false);
+
+        expect().toBe(true);
 
         query.sendKeys('java');
-        expect(vacList.count()).toBe(20);
+        result =(vacList.count()>20?true:false);
+        expect(result).toBe(true);
 
         query.clear();
         query.sendKeys('javaScript');
-        expect(vacList.count()).toBe(20);
+        result =(vacList.count()>20?true:false);
+        expect(result).toBe(true);
     });
 
 

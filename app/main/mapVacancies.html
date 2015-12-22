@@ -1,38 +1,57 @@
 <div ng-controller="mapVacanciesListCtrl">
 
-    <leaflet  center="myCity" layers="layers" markers="markers" width="700" height="480"></leaflet>
     <div class="page-header">
         <h1>Карта с кластерами меток из полученных данных</h1>
     </div>
-    <ul >
-        <li ng-show="true"><input type="number" step="any" ng-model="myCity.lat" /> Latitude</li>
-        <li ng-show="true"><input type="number" step="any" ng-model="myCity.lng" /> Longitude</li>
-        <li><input type="number" step="any" ng-model="myCity.zoom" /> Zoom</li>
-    </ul>
 
-    <p>
-        <a ng-click="reload()" href="#/mapVacanciesList">Обновить</a>
-    <p>
+    <leaflet  bounds="bounds" layers="layers" markers="markers" width="700" height="480"></leaflet>
+
+    <div ng-show="false">
+        Latitude NorthEast: <input step="any" ng-model="bounds.northEast.lat" type="number">
+        Longitude NorthEast: <input step="any" ng-model="bounds.northEast.lng" type="number">
+        Latitude SouthWest: <input step="any" ng-model="bounds.southWest.lat" type="number">
+        Longitude SouthWest: <input step="any" ng-model="bounds.southWest.lng" type="number">
+    </div>
+
+    <form ng-submit="loadData()">
+
+        <div class="col-lg-6">
+            <div class="input-group">
+                  <input type="text" ng-model="searchInput" ng-enter="loadData()"  class="form-control">
+                  <span class="input-group-btn">
+                      <a class="btn btn-primary " role="button" ng-click="reload()" href="#/mapVacanciesList">Обновить</a>
+                  </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </form>
+    <p><br><p>
 
     <ul>
-        <table>
+        <table class="table-bordered">
+            <tr align="center">
+                <td>Наименование вакансии</td>
+                <td>Город</td>
+                <td>Наниматель</td>
+                <td>Валюта</td>
+                <td>Сумма вознаграждения</td>
+                <td>Требования</td>
+                <td>Сфера ответственности</td>
+                <td>Адрес</td>
+                <td>Координаты</td>
+            </tr>
+
             <tr ng-repeat="vacancy in vacancies">
-                    <td>{{vacancy.name}}</td>
-                    <td>{{vacancy.salary.currency}}</td>
-                    <td>{{vacancy.salary.from}}</td>
-                    <td>{{vacancy.salary.to}}</td>
-                    <td>{{vacancy.snippet.requirement}}</td>
-                    <td>{{vacancy.snippet.responsibility}}</td>
-                    <td>{{vacancy.area.name}}</td>
+                    <td valign="top">{{vacancy.name}}</td>
+                    <td align="center">{{vacancy.area.name}}</td>
                     <td>{{vacancy.employer.name}}</td>
+                    <td  align="center">{{vacancy.salary.currency}}</td>
+                    <td>{{vacancy.salary.from}} - {{vacancy.salary.to}}</td>
+                    <td valign="top">{{vacancy.snippet.requirement}}</td>
+                    <td valign="top">{{vacancy.snippet.responsibility}}</td>
                     <td>{{vacancy.address.street}}</td>
-                    <td>{{vacancy.address.lat}}</td>
-                    <td>{{vacancy.address.lng}}</td>
+                    <td>[{{vacancy.address.lat}};{{vacancy.address.lng}}]</td>
             </tr>
         </table>
-        <!--<li >-->
-        <!--<span></span>-->
-        <!--<p>{{vacancy.address.city}}</p>-->
-        <!--</li>-->
+
     </ul>
 </div>

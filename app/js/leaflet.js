@@ -2,13 +2,12 @@
 
 var webmap = angular.module('leaflet', ['leaflet-directive']);
 
-webmap.controller("BasicCenterController", [ "$scope", function($scope) {
+webmap.controller("BasicCenterController", ["$scope", function ($scope) {
     angular.extend($scope, {
         myCity: {
-            //autoDiscover: true,
-                lat: 51.505,
-                lng: -0.09,
-                zoom: 11
+            lat: 51.505,
+            lng: -0.09,
+            zoom: 11
         },
 
         tiles: {
@@ -30,25 +29,16 @@ webmap.controller("BasicCenterController", [ "$scope", function($scope) {
             fadeAnimation: false
         },
         markers: {
-            m0: {
-                //lat: 51.505,
-                //lng: -0.09,
-                //message: "I want to travel here!",
-                //focus: true,
-                //draggable: false
-
-                //lat: 53.9036983,
-                //lng: 27.5510742,
-            },
+            m0: {},
         }
     });
-    $scope.$watch("myCity.zoom", function(zoom) {
+    $scope.$watch("myCity.zoom", function (zoom) {
         $scope.tiles.url = (zoom > 10)
             ? "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             : "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
     });
 
-    $scope.addMarkers = function() {
+    $scope.addMarkers = function () {
         angular.extend($scope, {
             markers: {
                 m1: {
@@ -67,7 +57,7 @@ webmap.controller("BasicCenterController", [ "$scope", function($scope) {
         });
     };
 
-    $scope.removeMarkers = function() {
+    $scope.removeMarkers = function () {
         $scope.markers = {};
     }
 

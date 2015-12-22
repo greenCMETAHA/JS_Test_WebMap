@@ -25,15 +25,17 @@
     <script src="js/leaflet.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='./css/bootstrap.min.css' type='text/css' media='all'>
 
   </head>
   <body>
     <div>
-      <a href="#/table">Найти вакансии</a>, <a href="#/map">Показать карту Лифлет</a>, <a href="#/mapVacanciesList">Карта с вакансиями</a>
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#/mapVacanciesList">Карта с вакансиями</a></li>
+        <li><a href="#/table">Найти вакансии</a></li>
+        <li><a href="#/map">Показать карту Лифлет</a></li>
+      </ul>
       <p>
-      <input ng-model="searchInput" ng-change="reload" type="text">
-
       <div ng-view>
       </div>
     </div>
