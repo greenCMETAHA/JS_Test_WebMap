@@ -17,6 +17,13 @@
   "devDependencies": {
     "angular": "~1.2.14",
     "angular-route": "~1.2.14"
+  },
+  "resolutions": {
+    "angular": "1.4.8",
+    "angular-route": "~1.4.8"
+  },
+  "dependencies": {
+    "angular-route": "~1.4.8",
+    "angular-resource": "~1.4.8"
   }
 }
-

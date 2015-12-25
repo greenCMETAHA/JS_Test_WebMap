@@ -1,3 +1,4 @@
+( function () {
 'use strict';
 
 var webmap = angular.module('leaflet', ['leaflet-directive']);
@@ -33,8 +34,7 @@ webmap.controller("BasicCenterController", ["$scope", function ($scope) {
         }
     });
     $scope.$watch("myCity.zoom", function (zoom) {
-        $scope.tiles.url = (zoom > 10)
-            ? "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        $scope.tiles.url = (zoom > 10) ? "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             : "http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}";
     });
 
@@ -59,8 +59,11 @@ webmap.controller("BasicCenterController", ["$scope", function ($scope) {
 
     $scope.removeMarkers = function () {
         $scope.markers = {};
-    }
+    };
 
     $scope.addMarkers();
     //$scope.myCity.zoom=12;
 }]);
+
+
+})();

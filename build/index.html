@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html  ng-app="js-test-webmap">
+<head>
+  <meta charset="utf-8">
+  <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">-->
+  <title>js-test-webmap</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel='stylesheet' href='lib.css' type='text/css' media='all'>
+  <link rel='stylesheet' href='lib_bower.css' type='text/css' media='all'>
+
+  <script src="http://code.angularjs.org/1.4.8/angular.js"></script>
+  <script src="http://code.angularjs.org/1.4.8/angular-route.js"></script>
+  <script src="http://code.angularjs.org/1.4.8/angular-resource.js"></script>
+
+  <script src="lib.js"></script>
+
+  <script src="templates.js"></script>
+  <script src="app.js"></script>
+
+
+</head>
+<body>
+<div>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="#/mapVacanciesList">Карта с вакансиями</a></li>
+    <li><a href="#/table">Найти вакансии</a></li>
+    <li><a href="#/map">Показать карту Лифлет</a></li>
+  </ul>
+  <p>
+  <div ng-view>
+  </div>
+</div>
+</body>
+</html>

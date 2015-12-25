@@ -1,4 +1,6 @@
-'use strict';
+( function () {
+    'use strict';
+
 
 var webmap = angular.module('js-test-webmap', [
     'ngRoute',
@@ -27,4 +29,4 @@ webmap.config(['$routeProvider', '$httpProvider',
             });
     }]);
 
-
+})();

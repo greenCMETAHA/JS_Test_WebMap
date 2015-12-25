@@ -1,0 +1,49 @@
+<div ng-controller="MapCtrl">
+
+    <div class="page-header">
+        <h1>Список полученных с hh.ru данных</h1>
+    </div>
+
+    <form ng-submit="loadData()">
+
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input type="text" ng-model="searchInput" ng-enter="loadData()"  class="form-control">
+                  <span class="input-group-btn">
+                      <a class="btn btn-primary" role="button" ng-click="reload()" href="#/table">Обновить</a>
+                  </span>
+            </div><!-- /input-group -->
+        </div><!-- /.col-lg-6 -->
+    </form>
+    <p><p>
+<ul>
+    <table class="table-bordered">
+        <tr>
+            <td>Наименование вакансии</td>
+            <td>Город</td>
+            <td>Наниматель</td>
+            <td>Валюта</td>
+            <td>Сумма вознаграждения от</td>
+            <td>до</td>
+            <td>Требования</td>
+            <td>Сфера ответственности</td>
+            <td>Адрес</td>
+        </tr>
+        <tr ng-repeat="vacancy in vacancies">
+            <td>{{vacancy.name}}</td>
+            <td>{{vacancy.area.name}}</td>
+            <td>{{vacancy.employer.name}}</td>
+            <td>{{vacancy.salary.currency}}</td>
+            <td>{{vacancy.salary.from}}</td>
+            <td>{{vacancy.salary.to}}</td>
+            <td>{{vacancy.snippet.requirement}}</td>
+            <td>{{vacancy.snippet.responsibility}}</td>
+            <td>{{vacancy.address.street}}</td>
+        </tr>
+    </table>
+    <!--<li >-->
+        <!--<span></span>-->
+        <!--<p>{{vacancy.address.city}}</p>-->
+    <!--</li>-->
+</ul>
+</div>
