@@ -9,13 +9,13 @@ gulp.task('scripts', function(){
         .pipe(gulp.dest('./build'));
 });
 
-gulp.task('templates',function(){
-    //combine all template files of the app into a js file
-    gulp.src(['!./app/index.html',
-            './app/**/*.html'])
-        .pipe(plugins.angularTemplatecache('templates.js',{standalone:true}))
-        .pipe(gulp.dest('./build'));
-});
+//gulp.task('templates',function(){
+//    //combine all template files of the app into a js file
+//    gulp.src(['!./app/index.html',
+//            './app/**/*.html'])
+//        .pipe(plugins.angularTemplatecache('templates.js',{standalone:true}))
+//        .pipe(gulp.dest('./build'));
+//});
 
 gulp.task('main_thml', function(){
     gulp.src('./app/main/*.html')
@@ -54,13 +54,13 @@ gulp.task('vendorLeafletCSS', function(){
 
 });
 
-gulp.task('vendorJS', function(){
-    //concatenate vendor JS files
-    gulp.src(['!bower_components/**/*.min.js',
-            'bower_components/**/*.js'])
-        .pipe(plugins.concat('lib_bower.js',  {newLine: '; /* раздел */ \r\n'}))
-        .pipe(gulp.dest('./build'));
-});
+//gulp.task('vendorJS', function(){
+//    //concatenate vendor JS files
+//    gulp.src(['!bower_components/**/*.min.js',
+//            'bower_components/**/*.js'])
+//        .pipe(plugins.concat('lib_bower.js',  {newLine: '; /* раздел */ \r\n'}))
+//        .pipe(gulp.dest('./build'));
+//});
 
 
 
@@ -101,8 +101,7 @@ gulp.task('connect', function() {
     })
 });
 
-gulp.task('default',['connect','scripts', 'main_thml', 'images', 'templates','copy-index'
-    ,'vendorJS'
+gulp.task('default',['connect','scripts', 'main_thml', 'images', 'copy-index'
     ,'vendorLeafletJS'
     ,'vendorCSS'
     ,'vendorLeafletCSS'
